@@ -1,0 +1,41 @@
+{
+  "name": "vue-js-bridge",
+  "version": "1.0.0",
+  "author": "Kntt<kntt9968@gmail.com>",
+  "description": "vue webview plugin JsBridge WebViewJavascriptBridge vue-js-bridge",
+  "main": "src/index.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
+    "lint": "eslint --ext .js src --fix"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^2.0.12",
+    "eslint": "^5.14.0",
+    "eslint-plugin-vue-libs": "^3.0.0",
+    "ghooks": "^2.0.4",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    },
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "test",
+        "chore",
+        "refactor",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "please inupt commit message!",
+      "helpMessage": "Commit message format error"
+    }
+  },
+  "license": "MIT"
+}
