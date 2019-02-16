@@ -13,3 +13,12 @@ test/unit/coverage
 *.ntvs*
 *.njsproj
 *.sln
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xcworkspace/
+xcuserdata/

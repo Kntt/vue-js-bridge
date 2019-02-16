@@ -1,4 +1,6 @@
 export default {
   debug: true,
-  nativeHandlerName: 'nativeHandler'
+  nativeHandlerName: 'nativeHandler',
+  mock: true,
+  mockHandler: null
 }

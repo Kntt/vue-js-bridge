@@ -2,6 +2,7 @@
  * VueJsBridgePlugin
  * @author Kntt 20190216
  */
+import MockBridge from './mock'
 
 export default class VueJsBridgePlugin {
   options = null
@@ -9,6 +10,11 @@ export default class VueJsBridgePlugin {
     this.options = options
   }
   init (callback) {
+    const { mock, mockHandler } = this.options
+    if (mock && mockHandler) {
+      const bridge = new MockBridge(mockHandler)
+      return callback(bridge)
+    }
     if (window.WebViewJavascriptBridge) {
       return callback(window.WebViewJavascriptBridge)
     }
