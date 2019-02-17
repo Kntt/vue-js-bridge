@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Kntt<kntt9968@gmail.com>",
   "description": "vue webview plugin JsBridge WebViewJavascriptBridge vue-js-bridge",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
     "lint": "eslint --ext .js src --fix"
