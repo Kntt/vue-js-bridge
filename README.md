@@ -1,4 +1,6 @@
 ## vue-js-bridge
+
+- WebviewJavascriptBridge plugin for Vue.js
 - 基于[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)开发
 - Promise封装，支持`then`或者`async/await`等方式
 
@@ -131,8 +133,9 @@ this.$bridge.registerHandler('testJavascriptHandler', (data, callback) => {
 ```
 
 ## Todo
-[ ] 单元测试
-[ ] 增加 TypeScript types 支持
+
+* [ ] 增加单元测试
+* [ ] 增加 TypeScript types 支持
 
 ## License
 
