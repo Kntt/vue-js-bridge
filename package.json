@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "node example/client/server.js",
-    "release": "bash build/release.sh",
+    "release": "bash release.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
     "lint": "eslint --ext .js src --fix"
   },
