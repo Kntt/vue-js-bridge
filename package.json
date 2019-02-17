@@ -2,8 +2,12 @@
   "name": "vue-js-bridge",
   "version": "1.0.0",
   "author": "Kntt<kntt9968@gmail.com>",
-  "description": "vue webview plugin JsBridge WebViewJavascriptBridge vue-js-bridge",
+  "description": "webview-js-bridge for Vue.js",
+  "keywords": ["vue", "webview", "plugin", "JsBridge", "WebViewJavascriptBridge", "vue-js-bridge"],
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "node example/client/server.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
@@ -29,6 +33,15 @@
     "webpack-dev-middleware": "^3.5.2",
     "webpack-hot-middleware": "^2.24.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kntt/vue-js-bridge"
+  },
+  "bugs": {
+    "url": "https://github.com/Kntt/vue-js-bridge/issues"
+  },
+  "homepage": "https://github.com/Kntt/vue-js-bridge#readme",
+  "license": "MIT",
   "config": {
     "ghooks": {
       "commit-msg": "validate-commit-msg"
@@ -50,6 +63,5 @@
       "subjectPatternErrorMsg": "please inupt commit message!",
       "helpMessage": "Commit message format error"
     }
-  },
-  "license": "MIT"
+  }
 }
