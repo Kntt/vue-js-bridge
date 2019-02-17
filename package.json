@@ -1,9 +1,9 @@
 {
-  "name": "vue-js-bridge",
+  "name": "vue-webview-js-bridge",
   "version": "1.0.0",
   "author": "Kntt<kntt9968@gmail.com>",
   "description": "webview-js-bridge plugin for Vue.js",
-  "keywords": ["vue", "webview", "plugin", "JsBridge", "WebViewJavascriptBridge", "vue-js-bridge"],
+  "keywords": ["vue", "webview", "plugin", "JsBridge", "WebViewJavascriptBridge", "vue-js-bridge", "webview-js-bridge", "vue-webview-js-bridge"],
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -56,7 +56,8 @@
         "test",
         "chore",
         "refactor",
-        "revert"
+        "revert",
+        "build"
       ],
       "warnOnFail": false,
       "maxSubjectLength": 100,

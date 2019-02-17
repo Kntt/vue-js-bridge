@@ -1,4 +1,4 @@
-## vue-js-bridge
+## vue-webview-js-bridge
 
 - WebviewJavascriptBridge plugin for Vue.js
 - 基于[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)开发
@@ -9,13 +9,13 @@
 yarn:
 
 ```bash
-yarn add vue-js-bridge
+yarn add vue-webview-js-bridge
 ```
 
 npm:
 
 ```bash
-npm i vue-js-bridge
+npm i vue-webview-js-bridge
 ```
 
 ## [Example](https://github.com/Kntt/vue-js-bridge/tree/dev/example/client)
@@ -23,7 +23,7 @@ npm i vue-js-bridge
 ```js
 // main.js
 import Vue from 'vue'
-import VueJsBridge from 'vue-js-bridge'
+import VueJsBridge from 'vue-webview-js-bridge'
 
 Vue.use(VueJsBridge, {
   debug: true,
