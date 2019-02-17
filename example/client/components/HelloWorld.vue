@@ -23,7 +23,9 @@ export default {
     this.$bridge.registerHandler('testJavascriptHandler', (data, callback) => {
       this.code = data
       console.log('data from native:', data)
-      console.log('callback from native:', callback)
+      const responseData = { 'Javascript Says':'Right back atcha!' }
+			console.log('JS responding with', responseData)
+      callback(responseData)
     })
   },
   methods: {

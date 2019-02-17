@@ -5,15 +5,29 @@
   "description": "vue webview plugin JsBridge WebViewJavascriptBridge vue-js-bridge",
   "main": "lib/index.js",
   "scripts": {
+    "dev": "node example/client/server.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
     "lint": "eslint --ext .js src --fix"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
     "conventional-changelog-cli": "^2.0.12",
+    "css-loader": "^2.1.0",
     "eslint": "^5.14.0",
     "eslint-plugin-vue-libs": "^3.0.0",
+    "express": "^4.16.4",
     "ghooks": "^2.0.4",
-    "validate-commit-msg": "^2.14.0"
+    "validate-commit-msg": "^2.14.0",
+    "vue": "^2.6.6",
+    "vue-loader": "^15.6.2",
+    "vue-template-compiler": "^2.6.6",
+    "webpack": "^4.29.4",
+    "webpack-dev-middleware": "^3.5.2",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "config": {
     "ghooks": {
