@@ -130,6 +130,10 @@ this.$bridge.registerHandler('testJavascriptHandler', (data, callback) => {
   })
 ```
 
+## Todo
+[ ] 单元测试
+[ ] 增加 TypeScript types 支持
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
