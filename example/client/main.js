@@ -1,7 +1,7 @@
 import '@babel/polyfill'
 import Vue from 'vue'
 import App from './App.vue'
-import VueJsBridge from 'vue-js-bridge'
+import VueJsBridge from 'vue-webview-js-bridge'
 
 Vue.use(VueJsBridge, {
   debug: true,

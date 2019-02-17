@@ -25,7 +25,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'vue-js-bridge': path.resolve(__dirname, '../../lib/index.js')
+      'vue-webview-js-bridge': path.resolve(__dirname, '../../lib/index.js')
     }
   },
 
