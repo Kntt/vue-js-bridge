@@ -74,6 +74,77 @@ export default {
 }
 ```
 
+## TypeScript 支持
+### main.ts
+```ts
+// ...
+import VueJsBridge, { pluginOption } from 'vue-webview-js-bridge'
+
+interface Payload<T = any> {
+  type: string
+  data?: T
+}
+interface Response<T = any> {
+  code: number
+  data?: T
+}
+
+const option:pluginOption<Payload, Response> = {
+  debug: true,
+  nativeHandlerName: 'testObjcCallback',
+  mock: false,
+  mockHandler (payload, next) {
+    next(Object.assign({ code: 200 }, {
+      data: 'code from native'
+    }))
+  }
+}
+
+Vue.use(VueJsBridge, option)
+// ...
+```
+### component.vue
+```ts
+import { Vue, Component, Prop } from 'vue-property-decorator'
+
+interface Payload<T = any> {
+  type: string
+  data?: T
+}
+
+interface Response<T = any> {
+  code: number
+  data?: T
+}
+@Component
+export default class HelloWorld extends Vue {
+  @Prop({ default: '' }) private msg!: string
+  code: string = ''
+  mounted () {
+    this.$bridge.registerHandler<string, object>('testJavascriptHandler', (data, callback) => {
+      this.code = data
+      console.log('data from native:', data)
+      const responseData:object = { 'Javascript Says': 'Right back atcha!' }
+      console.log('JS responding with', responseData)
+      callback(responseData)
+    })
+  }
+  private async callNative () {
+    try {
+      let res = await this.$bridge.callHandler<Payload<object>, Response<string>>({
+        type: 'optionType',
+        data: {
+          name: 'optionData'
+        }
+      })
+      this.code = res.data
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+}
+```
+
 ## 配置参数(Options)
 ### debug
 - type: boolean
@@ -135,7 +206,7 @@ this.$bridge.registerHandler('testJavascriptHandler', (data, callback) => {
 ## Todo
 
 * [ ] 增加单元测试
-* [ ] 增加 TypeScript types 支持
+* [x] 增加 TypeScript types 支持
 
 ## License
 
