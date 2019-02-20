@@ -5,6 +5,7 @@
   "description": "webview-js-bridge plugin for Vue.js",
   "keywords": ["vue", "webview", "plugin", "JsBridge", "WebViewJavascriptBridge", "vue-js-bridge", "webview-js-bridge", "vue-webview-js-bridge"],
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "lib"
   ],
@@ -12,7 +13,7 @@
     "dev": "node example/client/server.js",
     "release": "bash release.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.MD -s",
-    "lint": "eslint --ext .js src --fix"
+    "lint": "eslint --ext .js lib --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
