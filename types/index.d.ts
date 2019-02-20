@@ -28,7 +28,7 @@ export interface pluginOption<P = any, R = any> {
 export class VueJsBridgePlugin {
   constructor (options: pluginOption)
   private init (callback: (bridge: Bridge) => void)
-  public registerHandler<Q> (name: string, fn: (request:Q) => void): void
+  public registerHandler<D, P = any> (name: string, fn: (data:D, callback:(payload?:P) => void) => void): void
   public callHandler<P, R> (payload: P): Promise<R>
 }
 
