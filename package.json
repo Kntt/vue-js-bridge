@@ -76,7 +76,8 @@
         "chore",
         "refactor",
         "revert",
-        "build"
+        "build",
+        "release"
       ],
       "warnOnFail": false,
       "maxSubjectLength": 100,

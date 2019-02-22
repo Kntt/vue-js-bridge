@@ -16,9 +16,9 @@ then
 
   # commit
   git add -A
-  git commit -m "build $VERSION"
+  git commit -m "build: v$VERSION"
   git tag v$VERSION
-  npm version $VERSION --message "[release] $VERSION"
+  npm version $VERSION --message "release: v$VERSION"
 
   # # publish
   git push origin refs/tags/v$VERSION
