@@ -1,4 +1,12 @@
-# 1.0.0 (2019-02-17)
+# 0.0.5 (2019-02-17)
+
+
+### Features
+
+* add types ([954db66](https://github.com/Kntt/vue-js-bridge/commit/954db66))
+* 更新registerHandler方法types ([2812a7d](https://github.com/Kntt/vue-js-bridge/commit/2812a7d))
+
+# 0.0.1 (2019-02-17)
 
 
 ### Bug Fixes
