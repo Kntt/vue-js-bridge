@@ -1,10 +1,7 @@
-const fs = require('fs')
 const path = require('path')
 const babel = require('rollup-plugin-babel')
-const beautify = require('js-beautify').js_beautify
 const replace = require('rollup-plugin-replace')
-const pkg = require('../package.json')
-const version = process.env.VERSION || pkg.version
+const version = process.env.VERSION || require('../package.json').version
 const banner =
 `/**
  * vue-webview-js-bridge v${version}
@@ -65,20 +62,7 @@ function genConfig (opts) {
   return config
 }
 
-function writeVersion (version) {
-  return new Promise(function (resolve, reject) {
-    pkg.version = version
-    fs.writeFile(path.join(__dirname, '..', 'package.json'), beautify(JSON.stringify(pkg), { indent_size: 2 }), (err) => {
-      if (err) {
-        reject(err)
-      }
-      resolve()
-    })
-  })
-}
-
-function mapValues (obj, fn, version) {
-  writeVersion(version)
+function mapValues (obj, fn) {
   const res = {}
   Object.keys(obj).forEach(key => {
     res[key] = fn(obj[key], key)
@@ -86,4 +70,4 @@ function mapValues (obj, fn, version) {
   return res
 }
 
-module.exports = mapValues(configs, genConfig, version)
+module.exports = mapValues(configs, genConfig)
