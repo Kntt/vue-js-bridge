@@ -17,7 +17,6 @@ then
   # commit
   git add -A
   git commit -m "build: v$VERSION"
-  git tag v$VERSION
   npm version $VERSION --message "release: v$VERSION"
 
   # # publish
