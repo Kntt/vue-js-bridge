@@ -1,6 +1,6 @@
 {
   "name": "vue-webview-js-bridge",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Kntt<kntt9968@gmail.com>",
   "description": "webview-js-bridge plugin for Vue.js",
   "keywords": [
