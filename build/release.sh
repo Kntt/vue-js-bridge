@@ -11,13 +11,14 @@ then
   # build
   VERSION=$VERSION yarn build
 
-  # changelog
-  yarn changelog patch
-
   # commit
   git add -A
   git commit -m "build: v$VERSION"
   npm version $VERSION --message "release: v$VERSION"
+
+  # changelog
+  yarn changelog patch
+  git commit CHANGELOG.MD -m "build: changelog v$VERSION"
 
   # # publish
   git push origin refs/tags/v$VERSION
