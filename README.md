@@ -4,7 +4,7 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/kntt/vue-js-bridge.svg)
 
 - WebviewJavascriptBridge plugin for Vue.js
-- 基于[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)开发
+- 基于[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)(ios), [JsBridge](https://github.com/lzyzsd/JsBridge)(android)开发
 - Promise封装，支持`then`或者`async/await`等方式
 
 ## 安装
