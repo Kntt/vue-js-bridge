@@ -5,7 +5,7 @@ import VueJsBridge from 'vue-webview-js-bridge'
 
 Vue.use(VueJsBridge, {
   debug: true,
-  nativeHandlerName: 'testObjcCallback',
+  nativeHandlerName: 'callNativeHandler',
   mock: false,
   mockHandler (payload, next) {
     next(Object.assign({ form: 'native' }, payload))
