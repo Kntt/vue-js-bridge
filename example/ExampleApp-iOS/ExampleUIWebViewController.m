@@ -26,7 +26,7 @@
     _bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
     [_bridge setWebViewDelegate:self];
     
-    [_bridge registerHandler:@"testObjcCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [_bridge registerHandler:@"callNativeHandler" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"testObjcCallback called: %@", data);
         responseCallback(@"Response from testObjcCallback");
     }];
