@@ -154,9 +154,14 @@ export default class HelloWorld extends Vue {
 - default: `true`
 - description: 输出调用信息
 
+### delay
+- type: number
+- default: `200`
+- description: 由于birdge初始化需要时间导致的registerHandler失败的处理，延时调用时间，单位`ms`
+
 ### nativeHandlerName
 - type: string, 必填项
-- default: 'nativeHandler'
+- default: `'nativeHandler'`
 - description: 和原生开发人员协商的nativeHandlerName
 
 ### mock
@@ -166,7 +171,7 @@ export default class HelloWorld extends Vue {
 
 ### mockHandler
 - type: Function
-- default: null
+- default: `null`
 - description: 开发阶段mockHandler服务，需要配合mock使用，两者都设置的情况下mock生效. 是一个函数，第一个参数接收payload, 第二个参数接受bridge回调函数
 ```js
 mockHandler (payload, next) {
