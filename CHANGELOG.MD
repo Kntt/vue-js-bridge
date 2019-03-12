@@ -1,3 +1,26 @@
+## [0.0.7](https://github.com/Kntt/vue-js-bridge/compare/v0.0.6...v0.0.7) (2019-03-12)
+
+
+### Bug Fixes
+
+* 使用问题提示 close [#7](https://github.com/Kntt/vue-js-bridge/issues/7) ([cd59ea8](https://github.com/Kntt/vue-js-bridge/commit/cd59ea8))
+
+
+### Features
+
+* 修改registerHandler方法增加delay参数 ([3a41951](https://github.com/Kntt/vue-js-bridge/commit/3a41951)), closes [#7](https://github.com/Kntt/vue-js-bridge/issues/7)
+
+
+
+## [0.0.6](https://github.com/Kntt/vue-js-bridge/compare/v0.0.5...v0.0.6) (2019-02-22)
+
+
+### Features
+
+* 增加typescript支持 ([82f9b81](https://github.com/Kntt/vue-js-bridge/commit/82f9b81))
+
+
+
 ## [0.0.5](https://github.com/Kntt/vue-js-bridge/compare/v0.0.4...v0.0.5) (2019-02-20)
 
 
