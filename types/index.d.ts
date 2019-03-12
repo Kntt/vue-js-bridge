@@ -20,6 +20,7 @@ interface Bridge<P = any, R = any, Q = any> {
 
 export interface pluginOption<P = any, R = any> {
   debug?: boolean
+  delay?: number
   nativeHandlerName: string
   mock?: boolean
   mockHandler?: (payload: P, next:(response: R) => void) => void
