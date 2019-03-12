@@ -158,6 +158,7 @@ export default class HelloWorld extends Vue {
 - type: number
 - default: `200`
 - description: 由于birdge初始化需要时间导致的registerHandler失败的处理，延时调用时间，单位`ms`
+> native调用前端注册的方法最好也要延时处理，避免前端还未注册时候native调用导致的问题
 
 ### nativeHandlerName
 - type: string, 必填项
