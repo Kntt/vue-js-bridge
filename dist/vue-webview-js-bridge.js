@@ -1,5 +1,5 @@
 /**
- * vue-webview-js-bridge v0.0.6
+ * vue-webview-js-bridge v0.0.7
  * (c) 2019 Kntt
  * @license MIT
  */
@@ -160,9 +160,16 @@
     }, {
       key: 'registerHandler',
       value: function registerHandler(name, fn) {
-        this.init(function (bridge) {
-          bridge.registerHandler(name, fn);
-        });
+        var _this = this;
+
+        var delay = this.options.delay;
+        // birdge初始化需要时间，延迟处理注册方法
+
+        setTimeout(function () {
+          _this.init(function (bridge) {
+            bridge.registerHandler(name, fn);
+          });
+        }, delay);
       }
       /**
        * 前端调用native的方法
@@ -211,6 +218,8 @@
 
   var defaultOptions = {
     debug: true,
+    schemaName: 'yy',
+    delay: 200,
     nativeHandlerName: 'nativeHandler',
     mock: true,
     mockHandler: null
@@ -222,7 +231,7 @@
       Object.defineProperty(Vue.prototype, '$bridge', { value: new VueJsBridgePlugin(initConfig) });
     },
 
-    version: '0.0.6'
+    version: '0.0.7'
   };
 
   return index;
