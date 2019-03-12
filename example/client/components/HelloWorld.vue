@@ -27,6 +27,13 @@ export default {
 			console.log('JS responding with', responseData)
       callback(responseData)
     })
+    this.$bridge.registerHandler('functionInJs', (data, callback) => {
+      this.code = data
+      console.log('data from native:', data)
+      const responseData = { 'Javascript Says':'Right back atcha!' }
+			console.log('JS responding with', responseData)
+      callback(responseData)
+    })
   },
   methods: {
     async callNative () {

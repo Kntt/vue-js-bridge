@@ -5,6 +5,7 @@ import VueJsBridge from 'vue-webview-js-bridge'
 
 Vue.use(VueJsBridge, {
   debug: true,
+  delay: 200,
   nativeHandlerName: 'callNativeHandler',
   mock: false,
   mockHandler (payload, next) {
