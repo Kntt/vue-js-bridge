@@ -1,5 +1,5 @@
 /**
- * vue-webview-js-bridge v0.0.7
+ * vue-webview-js-bridge v0.0.8
  * (c) 2019 Kntt
  * @license MIT
  */
@@ -68,6 +68,64 @@ var type = function type(o) {
 };
 
 /**
+ * 获取设备信息
+ */
+var getDeviceInfo = function getDeviceInfo() {
+  var device = {};
+  var ua = navigator.userAgent;
+
+  var windows = ua.match(/(Windows Phone);?[\s\/]+([\d.]+)?/);
+  var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
+  var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+  var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+  var iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/);
+
+  device.ios = device.android = device.windows = device.iphone = device.ipod = device.ipad = device.androidChrome = false;
+
+  // Windows
+  if (windows) {
+    device.os = 'windows';
+    device.osVersion = windows[2];
+    device.windows = true;
+  }
+  // Android
+  if (android && !windows) {
+    device.os = 'android';
+    device.osVersion = android[2];
+    device.android = true;
+    device.androidChrome = ua.toLowerCase().indexOf('chrome') >= 0;
+  }
+  if (ipad || iphone || ipod) {
+    device.os = 'ios';
+    device.ios = true;
+  }
+  // iOS
+  if (iphone && !ipod) {
+    device.osVersion = iphone[2].replace(/_/g, '.');
+    device.iphone = true;
+  }
+  if (ipad) {
+    device.osVersion = ipad[2].replace(/_/g, '.');
+    device.ipad = true;
+  }
+  if (ipod) {
+    device.osVersion = ipod[3] ? ipod[3].replace(/_/g, '.') : null;
+    device.iphone = true;
+  }
+  // iOS 8+ changed UA
+  if (device.ios && device.osVersion && ua.indexOf('Version/') >= 0) {
+    if (device.osVersion.split('.')[0] === '10') {
+      device.osVersion = ua.toLowerCase().split('version/')[1].split(' ')[0];
+    }
+  }
+  device.iphonex = device.ios && screen.height === 812 && screen.width === 375;
+  // Webview
+  device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
+
+  return device;
+};
+
+/**
  * VueJsBridgePlugin
  * @author Kntt 20190216
  */
@@ -98,6 +156,7 @@ var MockBridge = function () {
  * VueJsBridgePlugin
  * @author Kntt 20190216
  */
+var deviceInfo = getDeviceInfo();
 
 var VueJsBridgePlugin = function () {
   function VueJsBridgePlugin() {
@@ -127,21 +186,32 @@ var VueJsBridgePlugin = function () {
         var bridge = new MockBridge(mockHandler);
         return callback(bridge);
       }
-      // 以下为[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)源码
-      if (window.WebViewJavascriptBridge) {
-        return callback(window.WebViewJavascriptBridge);
+      if (deviceInfo.android) {
+        // 以下为[JsBridge](https://github.com/lzyzsd/JsBridge)源码 -- android
+        if (window.WebViewJavascriptBridge) {
+          callback(window.WebViewJavascriptBridge);
+        } else {
+          document.addEventListener('WebViewJavascriptBridgeReady', function () {
+            callback(window.WebViewJavascriptBridge);
+          }, false);
+        }
+      } else {
+        // 以下为[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)源码 -- ios
+        if (window.WebViewJavascriptBridge) {
+          return callback(window.WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+          return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function () {
+          document.documentElement.removeChild(WVJBIframe);
+        }, 0);
       }
-      if (window.WVJBCallbacks) {
-        return window.WVJBCallbacks.push(callback);
-      }
-      window.WVJBCallbacks = [callback];
-      var WVJBIframe = document.createElement('iframe');
-      WVJBIframe.style.display = 'none';
-      WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-      document.documentElement.appendChild(WVJBIframe);
-      setTimeout(function () {
-        document.documentElement.removeChild(WVJBIframe);
-      }, 0);
     }
     /**
      * 注册提供native调用的方法
@@ -225,7 +295,7 @@ var index = {
     Object.defineProperty(Vue.prototype, '$bridge', { value: new VueJsBridgePlugin(initConfig) });
   },
 
-  version: '0.0.7'
+  version: '0.0.8'
 };
 
 export default index;
