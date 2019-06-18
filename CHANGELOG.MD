@@ -1,3 +1,12 @@
+## [0.0.8](https://github.com/Kntt/vue-js-bridge/compare/v0.0.7...v0.0.8) (2019-06-18)
+
+
+### Features
+
+* 更新插件初始化，处理安卓的问题 [#12](https://github.com/Kntt/vue-js-bridge/issues/12) ([4cd30c4](https://github.com/Kntt/vue-js-bridge/commit/4cd30c4))
+
+
+
 ## [0.0.7](https://github.com/Kntt/vue-js-bridge/compare/v0.0.6...v0.0.7) (2019-03-12)
 
 
